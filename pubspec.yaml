@@ -1,7 +1,7 @@
 name: flutter_exercise
 description: "An exercise project"
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -12,14 +12,29 @@ dependencies:
   flutter:
     sdk: flutter
 
+  #Architecture
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+
+  #Platform
+  go_router: ^14.6.3
+
+  #UI
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  #Architecture
+  riverpod_generator: ^2.6.4
+  build_runner: ^2.4.14
+  
+  #Linter
   flutter_lints: ^4.0.0
+  custom_lint: ^0.7.1
+  riverpod_lint: ^2.6.4
+
 
 flutter:
-
   uses-material-design: true
