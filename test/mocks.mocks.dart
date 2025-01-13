@@ -17,6 +17,16 @@ import 'package:flutter_exercise/features/auth/domain/model/login_credentials.da
     as _i8;
 import 'package:flutter_exercise/features/auth/domain/repository/auth_repository.dart'
     as _i7;
+import 'package:flutter_exercise/features/blog/data/dto/blog_post_dto.dart'
+    as _i10;
+import 'package:flutter_exercise/features/blog/data/mapper/blog_posts_mapper.dart'
+    as _i13;
+import 'package:flutter_exercise/features/blog/data/service/blog_service.dart'
+    as _i9;
+import 'package:flutter_exercise/features/blog/domain/model/blog_post.dart'
+    as _i12;
+import 'package:flutter_exercise/features/blog/domain/repository/blog_repository.dart'
+    as _i11;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -110,4 +120,59 @@ class MockAuthRepository extends _i1.Mock implements _i7.AuthRepository {
             returnValue: _i4.Future<bool>.value(false),
           )
           as _i4.Future<bool>);
+}
+
+/// A class which mocks [BlogService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockBlogService extends _i1.Mock implements _i9.BlogService {
+  MockBlogService() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<List<_i10.BlogPostDto>> blogPosts() =>
+      (super.noSuchMethod(
+            Invocation.method(#blogPosts, []),
+            returnValue: _i4.Future<List<_i10.BlogPostDto>>.value(
+              <_i10.BlogPostDto>[],
+            ),
+          )
+          as _i4.Future<List<_i10.BlogPostDto>>);
+}
+
+/// A class which mocks [BlogRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockBlogRepository extends _i1.Mock implements _i11.BlogRepository {
+  MockBlogRepository() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<List<_i12.BlogPost>> getBlogPosts() =>
+      (super.noSuchMethod(
+            Invocation.method(#getBlogPosts, []),
+            returnValue: _i4.Future<List<_i12.BlogPost>>.value(
+              <_i12.BlogPost>[],
+            ),
+          )
+          as _i4.Future<List<_i12.BlogPost>>);
+}
+
+/// A class which mocks [BlogPostsMapper].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockBlogPostsMapper extends _i1.Mock implements _i13.BlogPostsMapper {
+  MockBlogPostsMapper() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  List<_i12.BlogPost> toDomain(List<_i10.BlogPostDto>? blogposts) =>
+      (super.noSuchMethod(
+            Invocation.method(#toDomain, [blogposts]),
+            returnValue: <_i12.BlogPost>[],
+          )
+          as List<_i12.BlogPost>);
 }

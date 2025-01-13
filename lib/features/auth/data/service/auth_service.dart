@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_exercise/core/api/config.dart';
 import 'package:flutter_exercise/core/api/dio_provider.dart';
 import 'package:flutter_exercise/features/auth/data/dto/login_credentials_dto.dart';
 import 'package:flutter_exercise/features/auth/data/dto/login_response.dart';
@@ -12,8 +13,7 @@ final authServiceProvider = Provider<AuthService>((ref) {
   return AuthService(dio);
 });
 
-@RestApi(
-    baseUrl: "http://interview.unlockd.dev.s3-website-us-east-1.amazonaws.com/")
+@RestApi(baseUrl: baseURL)
 abstract class AuthService {
   factory AuthService(Dio dio, {String baseUrl}) = _AuthService;
 

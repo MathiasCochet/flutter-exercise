@@ -12,7 +12,8 @@ class SplashScreen extends ConsumerWidget {
 
     splashState.whenData((value) {
       if (value) {
-        Future.microtask(() => ref.read(goRouterProvider).go(loginScreenPath));
+        Future.microtask(
+            () => ref.read(goRouterProvider).replace(loginScreenPath));
       }
     });
 
