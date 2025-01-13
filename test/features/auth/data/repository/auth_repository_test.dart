@@ -5,7 +5,7 @@ import 'package:flutter_exercise/features/auth/domain/model/login_credentials.da
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../mocks.mocks.dart';
+import '../../../../mocks.mocks.dart';
 
 void main() {
   late MockAuthService mockAuthService;
