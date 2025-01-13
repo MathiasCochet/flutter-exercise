@@ -7,7 +7,7 @@ part of 'blog_overview_viewmodel.dart';
 // **************************************************************************
 
 String _$blogOverviewViewModelHash() =>
-    r'4a12994bb9a483afc9830904552906e00c4d5f49';
+    r'bb0c71875f358defb5ad33f1571894ed5f36d7f8';
 
 /// See also [BlogOverviewViewModel].
 @ProviderFor(BlogOverviewViewModel)

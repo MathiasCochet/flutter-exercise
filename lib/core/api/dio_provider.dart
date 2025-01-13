@@ -11,15 +11,6 @@ final logInterceptor = LogInterceptor(
 );
 
 final dioProvider = Provider<Dio>((ref) {
-  final dio = Dio();
-
-  dio.options.headers['Content-Type'] = 'application/json';
-  dio.interceptors.add(logInterceptor);
-
-  return dio;
-});
-
-final authDioProvider = Provider<Dio>((ref) {
   final authInterceptor = ref.watch(authInterceptorProvider);
   final dio = Dio();
 
@@ -44,10 +35,14 @@ class AuthInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    final token = await prefs.readToken();
-    if (token != null) {
-      options.headers['Authorization'] = 'Bearer $token';
+    if (options.headers.containsKey('Authorization')) {
+      final token = await prefs.readToken();
+
+      if (token != null) {
+        options.headers['Authorization'] = 'Bearer $token';
+      }
     }
+
     super.onRequest(options, handler);
   }
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_exercise/core/navigation/router.dart';
 import 'package:flutter_exercise/features/auth/ui/login_viewmodel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -29,7 +28,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           ),
         );
       } else if (next == LoginState.success) {
-        context.replace(blogOverviewScreenPath);
+        final goRouter = ref.read(goRouterProvider);
+        goRouter.go(blogOverviewScreenPath);
       }
     });
 

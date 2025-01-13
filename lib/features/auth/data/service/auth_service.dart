@@ -21,4 +21,8 @@ abstract class AuthService {
   Future<LoginResponse> login(
     @Body() LoginCredentialsDto credentials,
   );
+
+  @POST("logout")
+  @Header("Authorization")
+  Future<void> logout();
 }

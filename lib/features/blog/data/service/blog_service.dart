@@ -8,7 +8,7 @@ import 'package:retrofit/retrofit.dart';
 part 'blog_service.g.dart';
 
 final blogServiceProvider = Provider<BlogService>((ref) {
-  final dio = ref.watch(authDioProvider);
+  final dio = ref.watch(dioProvider);
   return BlogService(dio);
 });
 
@@ -17,5 +17,6 @@ abstract class BlogService {
   factory BlogService(Dio dio, {String baseUrl}) = _BlogService;
 
   @GET("/blog/posts")
+  @Header("Authorization")
   Future<List<BlogPostDto>> blogPosts();
 }

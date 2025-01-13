@@ -1,3 +1,4 @@
+import 'package:flutter_exercise/features/auth/data/repository/auth_repository_impl.dart';
 import 'package:flutter_exercise/features/blog/data/repository/blog_repository_impl.dart';
 import 'package:flutter_exercise/features/blog/domain/model/blog_post.dart';
 import 'package:flutter_exercise/features/blog/ui/blog_overview_viewmodel.dart';
@@ -24,13 +25,16 @@ const List<BlogPost> testBlogPosts = [
 
 void main() {
   late MockBlogRepository mockBlogRepository;
+  late MockAuthRepository mockAuthRepository;
   late ProviderContainer container;
 
   setUp(() {
     mockBlogRepository = MockBlogRepository();
+    mockAuthRepository = MockAuthRepository();
     container = ProviderContainer(
       overrides: [
         blogRepositoryProvider.overrideWithValue(mockBlogRepository),
+        authRepositoryProvider.overrideWithValue(mockAuthRepository),
       ],
     );
   });
@@ -59,5 +63,15 @@ void main() {
 
     await expectLater(viewModelFuture, throwsA(isA<Exception>()));
     verify(mockBlogRepository.getBlogPosts()).called(1);
+  });
+
+  test('logout calls AuthRepository.logout', () async {
+    when(mockAuthRepository.logout()).thenAnswer((_) async {});
+
+    final viewModel = container.read(blogOverviewViewModelProvider.notifier);
+
+    await viewModel.logout();
+
+    verify(mockAuthRepository.logout()).called(1);
   });
 }
