@@ -51,4 +51,14 @@ void main() {
     verify(mockAuthService.login(dto)).called(1);
     verifyNever(mockSecurePreferences.saveToken(any));
   });
+
+  test('logout calls AuthService.logout and deletes the token', () async {
+    when(mockAuthService.logout()).thenAnswer((_) async {});
+    when(mockSecurePreferences.deleteToken()).thenAnswer((_) async {});
+
+    await authRepository.logout();
+
+    verify(mockAuthService.logout()).called(1);
+    verify(mockSecurePreferences.deleteToken()).called(1);
+  });
 }

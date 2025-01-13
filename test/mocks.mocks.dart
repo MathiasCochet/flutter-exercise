@@ -68,6 +68,15 @@ class MockAuthService extends _i1.Mock implements _i3.AuthService {
             ),
           )
           as _i4.Future<_i2.LoginResponse>);
+
+  @override
+  _i4.Future<void> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 }
 
 /// A class which mocks [SecurePreferences].
@@ -120,6 +129,15 @@ class MockAuthRepository extends _i1.Mock implements _i7.AuthRepository {
             returnValue: _i4.Future<bool>.value(false),
           )
           as _i4.Future<bool>);
+
+  @override
+  _i4.Future<void> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i4.Future<void>.value(),
+            returnValueForMissingStub: _i4.Future<void>.value(),
+          )
+          as _i4.Future<void>);
 }
 
 /// A class which mocks [BlogService].

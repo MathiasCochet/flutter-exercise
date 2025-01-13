@@ -29,4 +29,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
     return true;
   }
+
+  @override
+  Future<void> logout() async {
+    await authService.logout();
+    return securePreferences.deleteToken();
+  }
 }

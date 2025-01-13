@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_exercise/core/navigation/router.dart';
 import 'package:flutter_exercise/features/blog/domain/model/blog_post.dart';
 import 'package:flutter_exercise/features/blog/ui/blog_overview_viewmodel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,10 +10,21 @@ class BlogOverviewScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final blogPostsAsyncValue = ref.watch(blogOverviewViewModelProvider);
+    final viewModel = ref.read(blogOverviewViewModelProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Blog Posts'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              viewModel.logout();
+              final goRouter = ref.read(goRouterProvider);
+              goRouter.go(loginScreenPath);
+            },
+          ),
+        ],
       ),
       body: blogPostsAsyncValue.when(
         data: (blogPosts) => _buildBlogPostsList(blogPosts),
