@@ -1,3 +1,5 @@
+import 'package:flutter_exercise/features/auth/data/repository/auth_repository_impl.dart';
+import 'package:flutter_exercise/features/auth/domain/model/login_credentials.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'login_viewmodel.g.dart';
@@ -10,10 +12,15 @@ class LoginViewModel extends _$LoginViewModel {
   LoginState build() => LoginState.idle;
 
   Future<void> login(String username, String password) async {
+    final authRepository = ref.watch(authRepositoryProvider);
     state = LoginState.loading;
-    await Future.delayed(const Duration(seconds: 2));
 
-    if (username == "test" && password == "1234") {
+    final result = await authRepository.login(LoginCredentials(
+      username: username,
+      password: password,
+    ));
+
+    if (result) {
       state = LoginState.success;
     } else {
       state = LoginState.error;

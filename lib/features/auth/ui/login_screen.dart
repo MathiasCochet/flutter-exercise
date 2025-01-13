@@ -20,7 +20,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     ref.listen<LoginState>(loginViewModelProvider, (previous, next) {
       if (next == LoginState.error) {
-        // Show Snackbar on error
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Invalid credentials, please try again.'),
@@ -28,7 +27,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           ),
         );
       } else if (next == LoginState.success) {
-        // Navigate to HomeScreen on success
+        // Navigate to Homescreen
       }
     });
 
